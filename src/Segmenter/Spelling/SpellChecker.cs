@@ -42,7 +42,7 @@ namespace JiebaNet.Segmenter.Spelling
             }
         }
 
-        internal ISet<string> GetEdits1(string word)
+        public ISet<string> GetEdits1(string word)
         {
             var splits = new List<WordSplit>();
             for (var i = 0; i <= word.Length; i++)

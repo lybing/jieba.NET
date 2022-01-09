@@ -86,7 +86,7 @@ namespace JiebaNet.Segmenter.Cli
 
             if (options.ShowVersion)
             {
-                Console.WriteLine("jieba.NET 0.41");
+                Console.WriteLine("jieba.NET 1.0");
                 return;
             }
 

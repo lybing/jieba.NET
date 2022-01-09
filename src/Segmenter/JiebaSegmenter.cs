@@ -22,11 +22,11 @@ namespace JiebaNet.Segmenter
 
         #region Regular Expressions
 
-        internal static readonly Regex RegexChineseDefault = new Regex(@"([\u4E00-\u9FD5a-zA-Z0-9+#&\._%·\-]+)", RegexOptions.Compiled);
+        public static readonly Regex RegexChineseDefault = new Regex(@"([\u4E00-\u9FD5a-zA-Z0-9+#&\._%·\-]+)", RegexOptions.Compiled);
 
         internal static readonly Regex RegexSkipDefault = new Regex(@"(\r\n|\s)", RegexOptions.Compiled);
 
-        internal static readonly Regex RegexChineseCutAll = new Regex(@"([\u4E00-\u9FD5]+)", RegexOptions.Compiled);
+        public static readonly Regex RegexChineseCutAll = new Regex(@"([\u4E00-\u9FD5]+)", RegexOptions.Compiled);
         internal static readonly Regex RegexSkipCutAll = new Regex(@"[^a-zA-Z0-9+#\n]", RegexOptions.Compiled);
 
         internal static readonly Regex RegexEnglishChars = new Regex(@"[a-zA-Z0-9]", RegexOptions.Compiled);
@@ -171,7 +171,7 @@ namespace JiebaNet.Segmenter
 
         #region Internal Cut Methods
 
-        internal IDictionary<int, List<int>> GetDag(string sentence)
+        public IDictionary<int, List<int>> GetDag(string sentence)
         {
             var dag = new Dictionary<int, List<int>>();
             var trie = WordDict.Trie;
@@ -206,7 +206,7 @@ namespace JiebaNet.Segmenter
             return dag;
         }
 
-        internal IDictionary<int, Pair<int>> Calc(string sentence, IDictionary<int, List<int>> dag)
+        public IDictionary<int, Pair<int>> Calc(string sentence, IDictionary<int, List<int>> dag)
         {
             var n = sentence.Length;
             var route = new Dictionary<int, Pair<int>>();
@@ -230,7 +230,7 @@ namespace JiebaNet.Segmenter
             return route;
         }
 
-        internal IEnumerable<string> CutAll(string sentence)
+        public IEnumerable<string> CutAll(string sentence)
         {
             var dag = GetDag(sentence);
 
@@ -262,7 +262,7 @@ namespace JiebaNet.Segmenter
             return words;
         }
 
-        internal IEnumerable<string> CutDag(string sentence)
+        public IEnumerable<string> CutDag(string sentence)
         {
             var dag = GetDag(sentence);
             var route = Calc(sentence, dag);
@@ -300,7 +300,7 @@ namespace JiebaNet.Segmenter
             return tokens;
         }
 
-        internal IEnumerable<string> CutDagWithoutHmm(string sentence)
+        public IEnumerable<string> CutDagWithoutHmm(string sentence)
         {
             var dag = GetDag(sentence);
             var route = Calc(sentence, dag);
